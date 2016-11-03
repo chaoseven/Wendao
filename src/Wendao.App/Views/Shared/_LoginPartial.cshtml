@@ -1,6 +1,17 @@
 ﻿@if (User.Identity.IsAuthenticated)
 {
-    @: hi @User.Identity.Name
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a href="#">
+                hi, @User.Identity.Name
+            </a>
+        </li>
+        <li>
+            <a href="/Account/Signout">
+                Signout
+            </a>
+        </li>
+    </ul>
 }
 else
 {

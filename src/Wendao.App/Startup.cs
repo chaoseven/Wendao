@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
 
 namespace Wendao.App
 {
@@ -60,6 +61,15 @@ namespace Wendao.App
             app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseStaticFiles();
+
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationScheme="Cookie",
+                LoginPath = new PathString("/Account/Signin/"),
+                AccessDeniedPath = new PathString("/Account/Signup/"),
+                AutomaticAuthenticate=true,
+                AutomaticChallenge=true
+            });
 
             app.UseMvc(routes =>
             {
