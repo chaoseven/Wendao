@@ -1,0 +1,11 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+    @: hi @User.Identity.Name
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li><a id="signin" href="#">Signin</a></li>
+        <li><a id="signup" href="#">Signup</a></li>
+    </ul>
+}
