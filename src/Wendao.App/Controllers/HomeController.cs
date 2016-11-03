@@ -24,7 +24,7 @@ namespace Wendao.App.Controllers
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Email.";
 
             return View();
         }
