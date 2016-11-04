@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Wendao.App.Models;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Http.Authentication;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -26,7 +27,7 @@ namespace Wendao.App.Controllers
             claims.Add(new Claim(ClaimTypes.Name, loginInfo.Email, ClaimValueTypes.String));
             var ident = new ClaimsIdentity(claims, "Passport");
             var princ = new ClaimsPrincipal(ident);
-            await HttpContext.Authentication.SignInAsync("Cookie", princ);
+            await HttpContext.Authentication.SignInAsync("Cookie", princ,new AuthenticationProperties { IsPersistent = loginInfo.RememberMe });
             return Redirect(returnUrl);
         }
 
